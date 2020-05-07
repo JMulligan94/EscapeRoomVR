@@ -7,8 +7,8 @@ public class QuestDebug : MonoBehaviour
 {
     public static QuestDebug Instance;
     public Text m_text;
-	public static Color m_defaultColour;
-	public static Color m_errorColour;
+	public Color m_defaultColour;
+	public Color m_errorColour;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class QuestDebug : MonoBehaviour
 		if ( Instance.m_text != null )
 		{
 			Instance.m_text.text = message;
-			Instance.m_text.color = m_defaultColour;
+			Instance.m_text.color = Instance.m_defaultColour;
 		}
 		ConsoleLog( message );
 	}
@@ -40,7 +40,7 @@ public class QuestDebug : MonoBehaviour
 		if ( Instance.m_text != null )
 		{
 			Instance.m_text.text = message;
-			Instance.m_text.color = m_errorColour;
+			Instance.m_text.color = Instance.m_errorColour;
 		}
 		ConsoleError( message );
 	}

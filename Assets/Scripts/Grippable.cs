@@ -8,6 +8,8 @@ public class Grippable : MonoBehaviour
 
 	static List<Grippable> s_inputListeners;
 
+	public MeshRenderer m_mesh;
+
 	static Grippable()
 	{
 		s_inputListeners = new List<Grippable>();
@@ -54,17 +56,23 @@ public class Grippable : MonoBehaviour
 
 	public void OnTriggerEnter( Collider other )
 	{
-		if ( other.transform.GetComponent<XRHandController>() != null )
+		if ( other.tag == "Hand" )
 		{
+			QuestDebug.Log( "OnTriggerEnter hit: " + transform.name + " - " + other.transform.name + "\nTags: " + other.tag + "\nMaterial: " + m_mesh.material.name );
 			m_canGrip = true;
+			List<string> outNames = new List<string>();
+			QuestDebug.ConsoleLog( "Has highlighted: " + m_mesh.material.HasProperty( "IsHighlighted" ) );
+			m_mesh.material.SetInt( "IsHighlighted", 1 );
 		}
 	}
 
 	public void OnTriggerExit( Collider other )
 	{
-		if ( other.transform.GetComponent<XRHandController>() != null )
+		if ( other.tag == "Hand" )
 		{
+			QuestDebug.Log( "OnTriggerExit hit: " + transform.name + " - " + other.transform.name + "\nTags: " + other.tag + "\nMaterial: " + m_mesh.material.name );
 			m_canGrip = false;
+			m_mesh.material.SetInt( "IsHighlighted", 0 );
 		}
 	}
 }
