@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 370598206855620869}
   - component: {fileID: 1200650565667275868}
   - component: {fileID: 7725883113091544602}
+  - component: {fileID: 7648821204395818716}
   m_Layer: 0
   m_Name: SoundTotem
   m_TagString: Untagged
@@ -111,3 +112,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7648821204395818716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6101912375356552985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063268cf392a18e41aab9fd52b03dbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

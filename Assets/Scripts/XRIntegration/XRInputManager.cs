@@ -5,12 +5,27 @@ using UnityEngine.XR;
 
 public class XRInputManager : MonoBehaviour
 {
+	public class XRInputState
+	{
+		public bool GripPressed = false;
+
+		public void ResetState()
+		{
+			GripPressed = false;
+		}
+	}
+
+	private XRInputState m_prevState;
+	private XRInputState m_currentState;
 	private List<InputDevice> m_inputDevices;
 
 	// This function is called when the object becomes enabled and active.
 	void OnEnable()
 	{
 		m_inputDevices = new List<InputDevice>();
+		m_currentState = new XRInputState();
+		m_prevState = new XRInputState();
+
 		// Get all current input devices and register
 		List<InputDevice> allCurrentDevices = new List<InputDevice>();
 		InputDevices.GetDevices( allCurrentDevices );
@@ -36,17 +51,25 @@ public class XRInputManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		bool buttonDownState = false;
+		m_prevState = m_currentState;
+
+		bool gripPressed = false;
 		foreach ( InputDevice inputDevice in m_inputDevices )
 		{
 			bool buttonPressedState = false;
-			if ( inputDevice.TryGetFeatureValue( CommonUsages.primaryButton, out buttonPressedState ) )
-				buttonDownState |= buttonPressedState; 
+			if ( inputDevice.TryGetFeatureValue( CommonUsages.gripButton, out buttonPressedState ) )
+				gripPressed |= buttonPressedState; 
 		}
 
-		if ( buttonDownState )
-			QuestDebug.Log( "A button has been pressed!" );
-	
+		m_currentState.GripPressed = gripPressed;
+
+		if ( m_prevState.GripPressed != m_currentState.GripPressed )
+		{
+			if ( m_currentState.GripPressed )
+				Grippable.GripButtonPressed();
+			else
+				Grippable.GripButtonReleased();
+		}
 	}
 
 	private void OnInputDeviceConnected( InputDevice obj )

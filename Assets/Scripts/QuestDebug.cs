@@ -46,6 +46,12 @@ public class QuestDebug : MonoBehaviour
     public static void Log( string message )
     {
         //Instance.m_text.text = message;
-        Debug.Log( message );
+        Debug.Log("[QuestDebug] " + message );
     }
+
+	public static void Error( string message )
+	{
+		//Instance.m_text.text = message;
+		Debug.Log( "[QuestDebug][ERROR] " + message );
+	}
 }
