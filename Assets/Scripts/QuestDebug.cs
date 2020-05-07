@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class QuestDebug : MonoBehaviour
 {
     public static QuestDebug Instance;
-    private Text m_text;
-    private bool m_inMenu;
-    public Transform m_rig;
+    public Text m_text;
+	public static Color m_defaultColour;
+	public static Color m_errorColour;
 
     private void Awake()
     {
@@ -17,39 +17,41 @@ public class QuestDebug : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-      //  RectTransform labelRect = DebugUIBuilder.instance.AddLabel( "Label" );
-      //  m_text = labelRect.GetComponent<Text>();
-        
-        m_inMenu = false;
+    {        
     }
 
     // Update is called once per frame
     void Update()
     {
-    //    if ( OVRInput.GetDown( OVRInput.Button.Two ) || OVRInput.GetDown( OVRInput.Button.Start ) )
-        {
-            if ( m_inMenu )
-            {
-               // DebugUIBuilder.instance.Hide();
-            }
-            else
-            {
-               // DebugUIBuilder.instance.transform.position = m_rig.transform.TransformPoint( new Vector3( 0, 0, 4 ) );
-                //DebugUIBuilder.instance.transform.rotation = m_rig.transform.rotation;
-               // DebugUIBuilder.instance.Show();
-            }
-            m_inMenu = !m_inMenu;
-        }
     }
 
-    public static void Log( string message )
+	public static void Log( string message )
+	{
+		if ( Instance.m_text != null )
+		{
+			Instance.m_text.text = message;
+			Instance.m_text.color = m_defaultColour;
+		}
+		ConsoleLog( message );
+	}
+
+	public static void Error( string message )
+	{
+		if ( Instance.m_text != null )
+		{
+			Instance.m_text.text = message;
+			Instance.m_text.color = m_errorColour;
+		}
+		ConsoleError( message );
+	}
+
+	public static void ConsoleLog( string message )
     {
         //Instance.m_text.text = message;
         Debug.Log("[QuestDebug] " + message );
     }
 
-	public static void Error( string message )
+	public static void ConsoleError( string message )
 	{
 		//Instance.m_text.text = message;
 		Debug.Log( "[QuestDebug][ERROR] " + message );

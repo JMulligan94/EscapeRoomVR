@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Totem
+  m_Name: SeaTotem
   m_Shader: {fileID: -6465566751694194690, guid: bd469dd0eccc432429f64848eeee4ef8,
     type: 3}
   m_ShaderKeywords: 
@@ -35,4 +35,4 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - Colour: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - Colour: {r: 0, g: 0.14916758, b: 0.7924528, a: 0}

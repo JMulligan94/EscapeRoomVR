@@ -16,21 +16,27 @@ public class XRHandController : MonoBehaviour
 
 	private InputDevice m_handDevice;
 
-	// Start is called before the first frame update
-	void Start()
+	// This function is called when the object becomes enabled and active.
+	void OnEnable()
 	{
-		List<InputDevice> inputDevices = new List<InputDevice>();
-		InputDevices.GetDevicesWithCharacteristics( HandType == Hand.Left ? InputDeviceCharacteristics.Left : InputDeviceCharacteristics.Right, inputDevices );
-		m_handDevice = inputDevices.FirstOrDefault();
+		// Get all current input devices and register
+		List<InputDevice> allCurrentDevices = new List<InputDevice>();
+		InputDevices.GetDevices( allCurrentDevices );
+		foreach ( var device in allCurrentDevices )
+		{
+			OnInputDeviceConnected( device );
+		}
 
-		if ( m_handDevice != null )
-		{
-			QuestDebug.Log( "Found input device for hand: " + transform.name );
-		}
-		else
-		{
-			QuestDebug.Error( "Couldn't find device for hand: " + transform.name );
-		}
+		// Register callbacks for devices connecting
+		InputDevices.deviceConnected += OnInputDeviceConnected;
+	}
+
+	// This function is called when the behaviour becomes disabled.
+	// This is also called when the object is destroyed and can be used for any cleanup code.When scripts are reloaded after compilation has finished, OnDisable will be called, followed by an OnEnable after the script has been loaded.
+	void OnDisable()
+	{
+		// Unregister callbacks for devices connecting
+		InputDevices.deviceConnected -= OnInputDeviceConnected;
 	}
 
 	// Update is called once per frame
@@ -45,12 +51,21 @@ public class XRHandController : MonoBehaviour
 		if ( m_handDevice.TryGetFeatureValue( CommonUsages.devicePosition, out localPosition ) )
 		{
 			transform.localPosition = localPosition;
-			QuestDebug.Log( "Changing hand " + transform.name + ": " + localPosition );
+			QuestDebug.ConsoleLog( "Changing hand " + transform.name + ": " + localPosition );
 		}
 
 		if ( m_handDevice.TryGetFeatureValue( CommonUsages.deviceRotation, out localRotation ) )
 		{
 			transform.localRotation = localRotation;
+		}
+	}
+
+	private void OnInputDeviceConnected( InputDevice obj )
+	{
+		if ( obj.characteristics.HasFlag( HandType == Hand.Left ? InputDeviceCharacteristics.Left : InputDeviceCharacteristics.Right ) )
+		{
+			QuestDebug.ConsoleLog( "Input device connected: " + transform.name );
+			m_handDevice = obj;
 		}
 	}
 }

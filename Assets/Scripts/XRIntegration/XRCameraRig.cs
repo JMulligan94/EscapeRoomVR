@@ -18,11 +18,11 @@ public class XRCameraRig : MonoBehaviour
 
 		if ( m_hmdDevice != null )
 		{
-			QuestDebug.Log( "Found HMD device: " + transform.name + " " + m_hmdDevice.name + ", " + m_hmdDevice.manufacturer );
+			QuestDebug.ConsoleLog( "Found HMD device: " + transform.name + " " + m_hmdDevice.name + ", " + m_hmdDevice.manufacturer );
 		}
 		else
 		{
-			QuestDebug.Error( "Couldn't find HMD device" );
+			QuestDebug.ConsoleError( "Couldn't find HMD device" );
 		}
 	}
 
