@@ -12,13 +12,16 @@ public class XRHandController : MonoBehaviour
 		Right
 	}
 
-	public Hand HandType;
+	public Hand m_handType;
+	private Gripper m_gripper;
 
 	private InputDevice m_handDevice;
 
 	// This function is called when the object becomes enabled and active.
 	void OnEnable()
 	{
+		m_gripper = transform.GetComponent<Gripper>();
+
 		// Get all current input devices and register
 		List<InputDevice> allCurrentDevices = new List<InputDevice>();
 		InputDevices.GetDevices( allCurrentDevices );
@@ -58,11 +61,17 @@ public class XRHandController : MonoBehaviour
 		{
 			transform.localRotation = localRotation;
 		}
+
+		bool gripPressed = false;
+		m_handDevice.TryGetFeatureValue( CommonUsages.gripButton, out gripPressed );
+
+		m_gripper.SetGripping( gripPressed );
+		
 	}
 
 	private void OnInputDeviceConnected( InputDevice obj )
 	{
-		if ( obj.characteristics.HasFlag( HandType == Hand.Left ? InputDeviceCharacteristics.Left : InputDeviceCharacteristics.Right ) )
+		if ( obj.characteristics.HasFlag( m_handType == Hand.Left ? InputDeviceCharacteristics.Left : InputDeviceCharacteristics.Right ) )
 		{
 			QuestDebug.ConsoleLog( "Input device connected: " + transform.name );
 			m_handDevice = obj;

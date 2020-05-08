@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ public class QuestDebug : MonoBehaviour
 {
     public static QuestDebug Instance;
     public Text m_text;
+	public Text m_timeText;
 	public Color m_defaultColour;
 	public Color m_errorColour;
 
@@ -23,7 +25,8 @@ public class QuestDebug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
+		m_timeText.text = DateTime.Now.ToLongTimeString();
+	}
 
 	public static void Log( string message )
 	{

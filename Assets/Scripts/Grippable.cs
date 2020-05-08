@@ -4,38 +4,15 @@ using UnityEngine;
 
 public class Grippable : MonoBehaviour
 {
-	private bool m_canGrip = false;
-
-	static List<Grippable> s_inputListeners;
-
 	public MeshRenderer m_mesh;
+	public Rigidbody m_rigidBody;
 
-	static Grippable()
-	{
-		s_inputListeners = new List<Grippable>();
-	}
-
-	public static void GripButtonPressed()
-	{
-		foreach ( var grippable in s_inputListeners )
-		{
-			grippable.OnGrip();
-		}
-	}
-
-	public static void GripButtonReleased()
-	{
-		foreach ( var grippable in s_inputListeners )
-		{
-			grippable.OnRelease();
-		}
-	}
+	private Transform m_originalParent;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		// Probably want to change this to only listen when trigger area overlap
-		s_inputListeners.Add( this );
+		m_originalParent = transform.parent;
 	}
 
 	// Update is called once per frame
@@ -44,25 +21,26 @@ public class Grippable : MonoBehaviour
 		
 	}
 
-	public void OnGrip()
+	public void OnGrip(Transform anchorPoint)
 	{
-		QuestDebug.ConsoleLog( "Gripped: " + transform.name );
+		transform.SetParent( anchorPoint );
+		m_rigidBody.isKinematic = true;
+		m_rigidBody.useGravity = false;
 	}
 
 	public void OnRelease()
 	{
-		QuestDebug.ConsoleLog( "Released: " + transform.name );
+		transform.SetParent( m_originalParent );
+		m_rigidBody.isKinematic = false;
+		m_rigidBody.useGravity = true;
 	}
 
 	public void OnTriggerEnter( Collider other )
 	{
 		if ( other.tag == "Hand" )
 		{
-			QuestDebug.Log( "OnTriggerEnter hit: " + transform.name + " - " + other.transform.name + "\nTags: " + other.tag + "\nMaterial: " + m_mesh.material.name );
-			m_canGrip = true;
-			List<string> outNames = new List<string>();
-			QuestDebug.ConsoleLog( "Has highlighted: " + m_mesh.material.HasProperty( "IsHighlighted" ) );
 			m_mesh.material.SetInt( "IsHighlighted", 1 );
+			other.GetComponent<Gripper>().AddGrippable( this );
 		}
 	}
 
@@ -70,9 +48,8 @@ public class Grippable : MonoBehaviour
 	{
 		if ( other.tag == "Hand" )
 		{
-			QuestDebug.Log( "OnTriggerExit hit: " + transform.name + " - " + other.transform.name + "\nTags: " + other.tag + "\nMaterial: " + m_mesh.material.name );
-			m_canGrip = false;
 			m_mesh.material.SetInt( "IsHighlighted", 0 );
+			other.GetComponent<Gripper>().RemoveGrippable( this );
 		}
 	}
 }
