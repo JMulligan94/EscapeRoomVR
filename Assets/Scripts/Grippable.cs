@@ -9,6 +9,8 @@ public class Grippable : MonoBehaviour
 
 	private Transform m_originalParent;
 
+	private bool m_gripped = false;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -23,9 +25,11 @@ public class Grippable : MonoBehaviour
 
 	public void OnGrip(Transform anchorPoint)
 	{
+		SetHighlighted( false );
 		transform.SetParent( anchorPoint );
 		m_rigidBody.isKinematic = true;
 		m_rigidBody.useGravity = false;
+		m_gripped = true;
 	}
 
 	public void OnRelease()
@@ -33,23 +37,35 @@ public class Grippable : MonoBehaviour
 		transform.SetParent( m_originalParent );
 		m_rigidBody.isKinematic = false;
 		m_rigidBody.useGravity = true;
+		m_gripped = false;
 	}
 
 	public void OnTriggerEnter( Collider other )
 	{
+		if ( m_gripped )
+			return;
+
 		if ( other.tag == "Hand" )
 		{
-			m_mesh.material.SetInt( "IsHighlighted", 1 );
+			SetHighlighted( true );
 			other.GetComponent<Gripper>().AddGrippable( this );
 		}
 	}
 
 	public void OnTriggerExit( Collider other )
 	{
+		if ( m_gripped )
+			return;
+
 		if ( other.tag == "Hand" )
 		{
-			m_mesh.material.SetInt( "IsHighlighted", 0 );
+			SetHighlighted( false );
 			other.GetComponent<Gripper>().RemoveGrippable( this );
 		}
+	}
+
+	private void SetHighlighted( bool highlighted )
+	{
+		m_mesh.material.SetInt( "IsHighlighted", highlighted ? 1 : 0 );
 	}
 }

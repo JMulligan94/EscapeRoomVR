@@ -62,8 +62,6 @@ public class Gripper : MonoBehaviour
 		Grippable objectToGrip = m_grippables.FirstOrDefault();
 		m_currentGrippable = objectToGrip;
 		objectToGrip.OnGrip( m_anchorPoint );
-
-		m_collider.enabled = false;
 	}
 
 	private void OnRelease()
@@ -72,6 +70,7 @@ public class Gripper : MonoBehaviour
 			return;
 		
 		m_currentGrippable.OnRelease();
+		RemoveGrippable( m_currentGrippable );
 		m_currentGrippable = null;
 	}
 }
