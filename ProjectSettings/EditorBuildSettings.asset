@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/TrainCar.unity
+    guid: 51e882267e351a9429c5c403192d39a8
+  - enabled: 1
+    path: Assets/Scenes/Prototype.unity
+    guid: 78e90c928f3b8254baad8c033cfbd824
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3529b00160267694fa15fc71425a0c94,
       type: 2}
