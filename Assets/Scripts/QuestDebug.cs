@@ -50,13 +50,11 @@ public class QuestDebug : MonoBehaviour
 
 	public static void ConsoleLog( string message )
     {
-        //Instance.m_text.text = message;
         Debug.Log("[QuestDebug] " + message );
     }
 
 	public static void ConsoleError( string message )
 	{
-		//Instance.m_text.text = message;
 		Debug.Log( "[QuestDebug][ERROR] " + message );
 	}
 }
