@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,6 @@ public class Grippable : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
 	}
 
 	public void OnGrip(Transform anchorPoint)
@@ -67,5 +67,10 @@ public class Grippable : MonoBehaviour
 	private void SetHighlighted( bool highlighted )
 	{
 		m_mesh.material.SetInt( "IsHighlighted", highlighted ? 1 : 0 );
+	}
+
+	internal Rigidbody GetRigidBody()
+	{
+		return m_rigidBody;
 	}
 }
