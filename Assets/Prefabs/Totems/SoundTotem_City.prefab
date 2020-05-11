@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3751050840151439343
+--- !u!1001 &5729734001054595224
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,12 +11,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 4a806a7c64777a1448ed2e1e1662bae1, type: 3}
+      objectReference: {fileID: 8300000, guid: c4292637e827b0a4abfd38156c955e8f, type: 3}
     - target: {fileID: 6101912375356552985, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
         type: 3}
       propertyPath: m_Name
-      value: SoundTotem_Sea
+      value: SoundTotem_City
       objectReference: {fileID: 0}
+    - target: {fileID: 6373302787444075666, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
+        type: 3}
+      propertyPath: m_totemID
+      value: City
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373302787444075666, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
+        type: 3}
+      propertyPath: m_correctMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e3cad64b98e38ee49aa5c32cec8da45a, type: 2}
     - target: {fileID: 7370315009664339215, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 7370315009664339215, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0314
+      value: -0.1933
       objectReference: {fileID: 0}
     - target: {fileID: 7370315009664339215, guid: c274d5bcffa8f7c4991d8c8ef2790eaf,
         type: 3}

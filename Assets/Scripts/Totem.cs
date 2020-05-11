@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Totem : MonoBehaviour
 {
+	public string m_totemID;
+	public Material m_originalMaterial;
+	public Material m_correctMaterial;
+
 	private Shakeable m_shakeable;
 	private AudioSource m_totemSFX;
 
@@ -26,6 +30,8 @@ public class Totem : MonoBehaviour
 
 		m_shakeable.OnShakeStart += OnShakeStart;
 		m_shakeable.OnShakeEnd += OnShakeEnd;
+
+		m_originalMaterial = GetComponent<MeshRenderer>().material;
 
 		m_isShaking = false;
 	}
@@ -65,6 +71,16 @@ public class Totem : MonoBehaviour
 		m_hasStopped = true;
 		m_isShaking = false;
 		TryStopShaking();
+	}
+
+	public void AttachToPlinth()
+	{
+		GetComponent<MeshRenderer>().material = m_correctMaterial;
+	}
+
+	public void DetachFromPlinth()
+	{
+		GetComponent<MeshRenderer>().material = m_originalMaterial;
 	}
 
 	private void OnShakingTimerElapsed( object sender, ElapsedEventArgs e )

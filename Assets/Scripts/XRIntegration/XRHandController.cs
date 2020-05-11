@@ -54,7 +54,6 @@ public class XRHandController : MonoBehaviour
 		if ( m_handDevice.TryGetFeatureValue( CommonUsages.devicePosition, out localPosition ) )
 		{
 			transform.localPosition = localPosition;
-			//QuestDebug.ConsoleLog( "Changing hand " + transform.name + ": " + localPosition );
 		}
 
 		if ( m_handDevice.TryGetFeatureValue( CommonUsages.deviceRotation, out localRotation ) )

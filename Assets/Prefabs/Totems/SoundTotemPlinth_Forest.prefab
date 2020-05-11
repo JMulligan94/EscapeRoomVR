@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1887433066544343591
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.826963
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 128330231504368987, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334234174046045476, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundTotemPlinth_Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414596201016430214, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_totemID
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214332942699932771, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94136c58776337b48b9edfc3b007ac6d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02a5b807405725a438d70bbbdbbed199, type: 3}

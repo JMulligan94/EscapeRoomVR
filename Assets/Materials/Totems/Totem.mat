@@ -36,4 +36,4 @@ Material:
     m_Floats:
     - IsHighlighted: 0
     m_Colors:
-    - Colour: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0}
+    - Colour: {r: 0, g: 0, b: 0, a: 0}

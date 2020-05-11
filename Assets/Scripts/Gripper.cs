@@ -40,8 +40,7 @@ public class Gripper : MonoBehaviour
 		if ( IsGripping != gripPressed )
 		{
 			IsGripping = gripPressed;
-
-			QuestDebug.Log( "Grip pressed changed: " + gripPressed );
+			
 			if ( gripPressed )
 				OnGrip();
 			else
