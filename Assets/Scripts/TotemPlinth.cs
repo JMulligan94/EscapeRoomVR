@@ -21,27 +21,27 @@ public class TotemPlinth : MonoBehaviour
 		
 	}
 
-	void OnCollisionEnter( Collider other )
-	{
-		QuestDebug.Log( Time.time + " - " + transform.name + " colliding with " + other.transform.name );
-		if ( other.tag == "Totem" )
-		{
-			if ( other.transform.parent.GetComponent<Totem>().m_totemID == m_totemID )
-			{
-				// Success!
-				m_connectedTotem = other.transform.parent.gameObject;
-				m_connectedTotem.GetComponent<Totem>().AttachToPlinth();
-			}
-		}
-	}
+	//void OnCollisionEnter( Collider other )
+	//{
+	//	QuestDebug.Log( Time.time + " - " + transform.name + " colliding with " + other.transform.name );
+	//	if ( other.tag == "Totem" )
+	//	{
+	//		if ( other.transform.parent.GetComponent<Totem>().m_totemID == m_totemID )
+	//		{
+	//			// Success!
+	//			m_connectedTotem = other.transform.parent.gameObject;
+	//			m_connectedTotem.GetComponent<Totem>().AttachToPlinth();
+	//		}
+	//	}
+	//}
 
-	void OnCollisionExit( Collider other )
-	{
-		if ( m_connectedTotem != null 
-			&& other.transform.parent.gameObject == m_connectedTotem )
-		{
-			m_connectedTotem = null;
-			m_connectedTotem.GetComponent<Totem>().DetachFromPlinth();
-		}
-	}
+	//void OnCollisionExit( Collisio other )
+	//{
+	//	if ( m_connectedTotem != null 
+	//		&& other.transform.parent.gameObject == m_connectedTotem )
+	//	{
+	//		m_connectedTotem = null;
+	//		m_connectedTotem.GetComponent<Totem>().DetachFromPlinth();
+	//	}
+	//}
 }
