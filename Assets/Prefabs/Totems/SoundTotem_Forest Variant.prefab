@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_correctMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 2aea0ec6a9f75794a987eb5b515be0ca, type: 2}
+    - target: {fileID: 309968669031161393, guid: f34a54eafd63f2a4da9419a34cb2d49c,
+        type: 3}
+      propertyPath: m_socketType
+      value: Forest
+      objectReference: {fileID: 0}
     - target: {fileID: 4971829194947815821, guid: f34a54eafd63f2a4da9419a34cb2d49c,
         type: 3}
       propertyPath: m_audioClip
@@ -25,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 6101912375356552985, guid: f34a54eafd63f2a4da9419a34cb2d49c,
         type: 3}
       propertyPath: m_Name
-      value: SoundTotem_Forest
+      value: SoundTotem_Forest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7370315009664339215, guid: f34a54eafd63f2a4da9419a34cb2d49c,
         type: 3}

@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_totemID
       value: Sea
       objectReference: {fileID: 0}
+    - target: {fileID: 4414596201016430214, guid: 02a5b807405725a438d70bbbdbbed199,
+        type: 3}
+      propertyPath: m_acceptedType
+      value: Sea
+      objectReference: {fileID: 0}
     - target: {fileID: 6960440526566824950, guid: 02a5b807405725a438d70bbbdbbed199,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4971829194947815821}
   m_Layer: 0
   m_Name: SoundTotem
-  m_TagString: Totem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b17a2757967d0419fb807e09e61269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_totemID: 
+  m_socketType: 
   m_originalMaterial: {fileID: 2100000, guid: d50f707f61d20cd40a5005548fee9529, type: 2}
   m_correctMaterial: {fileID: 0}
 --- !u!82 &4971829194947815821

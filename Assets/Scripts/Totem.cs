@@ -2,9 +2,8 @@
 using System.Timers;
 using UnityEngine;
 
-public class Totem : MonoBehaviour
+public class Totem : XRSocketInteractable
 {
-	public string m_totemID;
 	public Material m_originalMaterial;
 	public Material m_correctMaterial;
 
